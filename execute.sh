@@ -80,13 +80,12 @@ execute () {
 	echo \#SBATCH --partition=aws >> ./$1_$2.sh
 	echo \# >> ./$1_$2.sh
 	echo \#SBATCH --time=10:00 >> ./$1_$2.sh
-	echo \#SBATCH --cpus-per-task=1 >> ./$1_$2.sh
 	echo mpirun /nfs/mpi/npbinaries/$1 >> ./$1_$2.sh
 
 	echo "Giving time to the NFS to replicate... 5 sec"
 	sleep 5
 	echo "Executing test $1 with $2 nodes and $3 tasks-per-node"
-	JOB_ID=$(sbatch -N $2 -n $3 ./$1_$2.sh | awk '{print $4}')
+	JOB_ID=$(sbatch -N $2 --ntasks-per-node $3 ./$1_$2.sh | awk '{print $4}')
 	
 	echo Submitted job $JOB_ID
 
@@ -181,15 +180,15 @@ startup () {
 	echo "Executing tests!"
 	mkdir -p /nfs/mpi/reports/$datetime/
 	touch /nfs/mpi/reports/$datetime/report.txt
-	#iterator [kernel name] [nodes] [tasks per node] [iterations]
+	#iterator [kernel name] [nodes] [tasks per node (do not touch!)] [iterations]
 	iterator lu.B.x 1 2 5 $datetime
 	iterator cg.B.x 1 2 5 $datetime
-	iterator lu.B.x 2 4 5 $datetime
-	iterator cg.B.x 2 4 5 $datetime
-	iterator lu.B.x 4 8 5 $datetime
-	iterator cg.B.x 4 8 5 $datetime
-	iterator lu.B.x 8 16 5 $datetime
-	iterator cg.B.x 8 16 5 $datetime
+	iterator lu.B.x 2 2 5 $datetime
+	iterator cg.B.x 2 2 5 $datetime
+	iterator lu.B.x 4 2 5 $datetime
+	iterator cg.B.x 4 2 5 $datetime
+	iterator lu.B.x 8 2 5 $datetime
+	iterator cg.B.x 8 2 5 $datetime
 
 	bye "Finished execution of tests, saved to /nfs/mpi/reports/$datetime/report.txt"
 
