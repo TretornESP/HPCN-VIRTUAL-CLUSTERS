@@ -1,0 +1,63 @@
+
+
+ NAS Parallel Benchmarks 3.4 -- CG Benchmark
+
+ Size:      75000  (class B)
+ Iterations:    75
+ Number of nonzeroes per row:       13
+ Eigenvalue shift:    60.000
+ Total number of processes:      8
+
+   iteration           ||r||                 zeta
+        1       0.16899786290134E-12    59.9994751578754
+        5       0.74862489330930E-15    22.6275390653891
+       10       0.76068125299394E-15    22.7108351397172
+       15       0.75342160942637E-15    22.7126844161816
+       20       0.75714986102268E-15    22.7127429721365
+       25       0.75229419242410E-15    22.7127453628460
+       30       0.74775199632522E-15    22.7127454763705
+       35       0.74716852745872E-15    22.7127454822834
+       40       0.75026124849125E-15    22.7127454826115
+       45       0.74808005039469E-15    22.7127454826305
+       50       0.74180399605152E-15    22.7127454826316
+       55       0.73671560207932E-15    22.7127454826316
+       60       0.73138048261265E-15    22.7127454826315
+       65       0.73178848188124E-15    22.7127454826316
+       70       0.72990700757830E-15    22.7127454826317
+       75       0.73125107634413E-15    22.7127454826317
+ Benchmark completed 
+ VERIFICATION SUCCESSFUL 
+ Zeta is     0.2271274548263E+02
+ Error is    0.3190955452874E-13
+
+
+ CG Benchmark Completed.
+ Class           =                        B
+ Size            =                    75000
+ Iterations      =                       75
+ Time in seconds =                     4.73
+ Total processes =                        8
+ Active processes=                        8
+ Mop/s total     =                 11556.56
+ Mop/s/process   =                  1444.57
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    3.4.3
+ Compile date    =              20 Dec 2024
+
+ Compile options:
+    MPIFC        = mpif90
+    FLINK        = $(MPIFC)
+    FMPI_LIB     = (none)
+    FMPI_INC     = (none)
+    FFLAGS       = -O3
+    FLINKFLAGS   = $(FFLAGS)
+    RAND         = randi8
+
+
+ Please send feedbacks and/or the results of this run to:
+
+ NPB Development Team 
+ Internet: npb@nas.nasa.gov
+
+
