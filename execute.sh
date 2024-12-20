@@ -134,6 +134,7 @@ iterator () {
 
 	average=$(echo "$sum / $count" | bc -l)
 
+    sleep 2
 	echo "Average time for test is $average"
 	echo "[KERNEL: $1 NODES: $2 TPN: $3 ITERATIONS: $4] AVG: $average" >> /nfs/mpi/reports/$5/report.txt
 }
@@ -181,14 +182,14 @@ startup () {
 	mkdir -p /nfs/mpi/reports/$datetime/
 	touch /nfs/mpi/reports/$datetime/report.txt
 	#iterator [kernel name] [nodes] [tasks per node] [iterations]
-	iterator lu.B.x 1 1 5 $datetime
-	iterator cg.B.x 1 1 5 $datetime
-	iterator lu.B.x 2 1 5 $datetime
-	iterator cg.B.x 2 1 5 $datetime
-	iterator lu.B.x 4 1 5 $datetime
-	iterator cg.B.x 4 1 5 $datetime
-	iterator lu.B.x 8 1 5 $datetime
-	iterator cg.B.x 8 1 5 $datetime
+	iterator lu.B.x 1 2 5 $datetime
+	iterator cg.B.x 1 2 5 $datetime
+	iterator lu.B.x 2 4 5 $datetime
+	iterator cg.B.x 2 4 5 $datetime
+	iterator lu.B.x 4 8 5 $datetime
+	iterator cg.B.x 4 8 5 $datetime
+	iterator lu.B.x 8 16 5 $datetime
+	iterator cg.B.x 8 16 5 $datetime
 
 	bye "Finished execution of tests, saved to /nfs/mpi/reports/$datetime/report.txt"
 
