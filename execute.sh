@@ -117,7 +117,7 @@ results () {
 
 iterator () {
 	echo "Running $4 times test $1 with $2 nodes, $3 tasks per node and generating average"
-	echo "Report folder: /nfs/mpi/$5"
+	echo "Report folder: /nfs/mpi/reports/$5"
 
 	sum=0
 	count=$4
@@ -128,14 +128,14 @@ iterator () {
 		sleep 2
 		result=$(results $1 $2 $i)
 		echo "Iteration $i took $result seconds"
-		cp /nfs/mpi/npbinaries/$1_$2_$i.out /nfs/mpi/$5/$1_$2_$i.out
+		cp /nfs/mpi/npbinaries/$1_$2_$i.out /nfs/mpi/reports/$5/$1_$2_$i.out
 		sum=$(echo "$sum + $result" | bc)
 	done
 
 	average=$(echo "$sum / $count" | bc -l)
 
 	echo "Average time for test is $average"
-	echo "[KERNEL: $1 NODES: $2 TPN: $3 ITERATIONS: $4] AVG: $average" >> /nfs/mpi/$5/report.txt
+	echo "[KERNEL: $1 NODES: $2 TPN: $3 ITERATIONS: $4] AVG: $average" >> /nfs/mpi/reports/$5/report.txt
 }
 
 startup () {
