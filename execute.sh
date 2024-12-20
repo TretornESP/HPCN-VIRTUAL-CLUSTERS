@@ -173,22 +173,22 @@ startup () {
 	if [ ! -f ./npbinaries/lu.B.x ] || [ ! -f ./npbinaries/cg.B.x ]; then
 		echo "Test do not exist, building..."
 		build
-	else
-		echo "Executing tests!"
-
-		mkdir -p /nfs/mpi/reports/$datetime/
-		touch /nfs/mpi/reports/$datetime/report.txt
-
-		#iterator [kernel name] [nodes] [tasks per node] [iterations]
-		iterator lu.B.x 1 1 5 $datetime
-		iterator cg.B.x 1 1 5 $datetime
-		iterator lu.B.x 2 1 5 $datetime
-		iterator cg.B.x 2 1 5 $datetime
-		iterator lu.B.x 4 1 5 $datetime
-		iterator cg.B.x 4 1 5 $datetime
-		iterator lu.B.x 8 1 5 $datetime
-		iterator cg.B.x 8 1 5 $datetime
 	fi
+	if [ ! -f ./npbinaries/lu.B.x ] || [ ! -f ./npbinaries/cg.B.x ]; then
+        bye "Error, tests could not be built"
+    fi
+	echo "Executing tests!"
+	mkdir -p /nfs/mpi/reports/$datetime/
+	touch /nfs/mpi/reports/$datetime/report.txt
+	#iterator [kernel name] [nodes] [tasks per node] [iterations]
+	iterator lu.B.x 1 1 5 $datetime
+	iterator cg.B.x 1 1 5 $datetime
+	iterator lu.B.x 2 1 5 $datetime
+	iterator cg.B.x 2 1 5 $datetime
+	iterator lu.B.x 4 1 5 $datetime
+	iterator cg.B.x 4 1 5 $datetime
+	iterator lu.B.x 8 1 5 $datetime
+	iterator cg.B.x 8 1 5 $datetime
 
 	bye "Finished execution of tests, saved to /nfs/mpi/reports/$datetime/report.txt"
 
