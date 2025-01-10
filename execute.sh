@@ -10,7 +10,6 @@ popd () {
 
 bye () {
 	echo $1
-	module unload mpi
 	exit
 }
 
@@ -76,7 +75,7 @@ execute () {
 	echo \#\!/bin/bash > ./$1_$2.sh
 	echo \# >> ./$1_$2.sh
 	echo \#SBATCH --job-name=$1_$2 >> ./$1_$2.sh
-	echo \#SBATCH --output=$1_$2_$4.out >> ./$1_$2.sh
+	echo \#SBATCH --output=/nfs/reports/$1_$2_$4.out >> ./$1_$2.sh
 	echo \#SBATCH --partition=aws >> ./$1_$2.sh
 	echo \# >> ./$1_$2.sh
 	echo \#SBATCH --time=10:00 >> ./$1_$2.sh
@@ -141,7 +140,6 @@ iterator () {
 startup () {
 	echo "NPB Experiments for HPCN"
 	echo "By Xabier Iglesias # xabier.iglesias.perez@udc.es"
-	module load mpi
  
 	# Check if the mpicc command is available
 	if ! command -v mpicc &> /dev/null
