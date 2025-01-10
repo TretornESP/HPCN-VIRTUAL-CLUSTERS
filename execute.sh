@@ -75,7 +75,7 @@ execute () {
 	echo \#\!/bin/bash > ./$1_$2.sh
 	echo \# >> ./$1_$2.sh
 	echo \#SBATCH --job-name=$1_$2 >> ./$1_$2.sh
-	echo \#SBATCH --output=/nfs/reports/$1_$2_$4.out >> ./$1_$2.sh
+	echo \#SBATCH --output=/nfs/mpi/npbinaries/$1_$2_$4.out >> ./$1_$2.sh
 	echo \#SBATCH --partition=aws >> ./$1_$2.sh
 	echo \# >> ./$1_$2.sh
 	echo \#SBATCH --time=10:00 >> ./$1_$2.sh
