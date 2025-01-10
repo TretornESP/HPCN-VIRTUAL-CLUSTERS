@@ -185,8 +185,8 @@ startup () {
 	iterator cg.B.x 2 2 5 $datetime
 	iterator lu.B.x 4 2 5 $datetime
 	iterator cg.B.x 4 2 5 $datetime
-	iterator lu.B.x 8 2 5 $datetime
-	iterator cg.B.x 8 2 5 $datetime
+	#iterator lu.B.x 8 2 5 $datetime
+	#iterator cg.B.x 8 2 5 $datetime
 
 	bye "Finished execution of tests, saved to /nfs/mpi/reports/$datetime/report.txt"
 
