@@ -179,6 +179,8 @@ startup () {
 	mkdir -p /nfs/mpi/reports/$datetime/
 	touch /nfs/mpi/reports/$datetime/report.txt
 	#iterator [kernel name] [nodes] [tasks per node (do not touch!)] [iterations]
+ 	iterator lu.B.x 1 1 5 $datetime
+ 	iterator lu.B.x 1 1 5 $datetime
 	iterator lu.B.x 1 2 5 $datetime
 	iterator cg.B.x 1 2 5 $datetime
 	iterator lu.B.x 2 2 5 $datetime
