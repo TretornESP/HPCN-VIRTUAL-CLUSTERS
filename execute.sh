@@ -177,6 +177,7 @@ startup () {
     fi
 	echo "Executing tests!"
 	mkdir -p /nfs/mpi/reports/$datetime/
+ 	chmod -R 777 /nfs/mpi/reports/$datetime/
 	touch /nfs/mpi/reports/$datetime/report.txt
 	#iterator [kernel name] [nodes] [tasks per node (do not touch!)] [iterations]
  	iterator lu.B.x 1 1 5 $datetime
